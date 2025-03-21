@@ -1,0 +1,26 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fond transparent -->
+  <rect width="200" height="200" fill="none" />
+  
+  <!-- Tige principale -->
+  <path d="M100 40V160" stroke="#E6C27A" stroke-width="3" stroke-linecap="round" />
+  
+  <!-- Épis de blé - côté gauche -->
+  <path d="M100 60L80 50C80 50 75 55 80 60C85 65 100 60 100 60Z" fill="#F2D794" stroke="#E6C27A" stroke-width="1.5" />
+  <path d="M100 75L75 65C75 65 70 70 75 75C80 80 100 75 100 75Z" fill="#F2D794" stroke="#E6C27A" stroke-width="1.5" />
+  <path d="M100 90L70 80C70 80 65 85 70 90C75 95 100 90 100 90Z" fill="#F2D794" stroke="#E6C27A" stroke-width="1.5" />
+  <path d="M100 105L75 95C75 95 70 100 75 105C80 110 100 105 100 105Z" fill="#F2D794" stroke="#E6C27A" stroke-width="1.5" />
+  <path d="M100 120L80 110C80 110 75 115 80 120C85 125 100 120 100 120Z" fill="#F2D794" stroke="#E6C27A" stroke-width="1.5" />
+  
+  <!-- Épis de blé - côté droit -->
+  <path d="M100 60L120 50C120 50 125 55 120 60C115 65 100 60 100 60Z" fill="#F2D794" stroke="#E6C27A" stroke-width="1.5" />
+  <path d="M100 75L125 65C125 65 130 70 125 75C120 80 100 75 100 75Z" fill="#F2D794" stroke="#E6C27A" stroke-width="1.5" />
+  <path d="M100 90L130 80C130 80 135 85 130 90C125 95 100 90 100 90Z" fill="#F2D794" stroke="#E6C27A" stroke-width="1.5" />
+  <path d="M100 105L125 95C125 95 130 100 125 105C120 110 100 105 100 105Z" fill="#F2D794" stroke="#E6C27A" stroke-width="1.5" />
+  <path d="M100 120L120 110C120 110 125 115 120 120C115 125 100 120 100 120Z" fill="#F2D794" stroke="#E6C27A" stroke-width="1.5" />
+  
+  <!-- Grains de blé au sommet -->
+  <path d="M100 40C100 40 95 30 100 25C105 20 110 25 110 30C110 35 100 40 100 40Z" fill="#F2D794" stroke="#E6C27A" stroke-width="1.5" />
+  <path d="M100 40C100 40 105 30 100 25C95 20 90 25 90 30C90 35 100 40 100 40Z" fill="#F2D794" stroke="#E6C27A" stroke-width="1.5" />
+  <path d="M100 40C100 40 100 30 105 25C110 20 115 30 110 35C105 40 100 40 100 40Z" fill="#F2D794" stroke="#E6C27A" stroke-width="1.5" />
+</svg>

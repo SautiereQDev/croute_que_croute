@@ -1,0 +1,53 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Base de la tarte (fond de tarte) -->
+  <path d="M40 120C40 120 50 150 100 150C150 150 160 120 160 120L150 80H50L40 120Z" fill="#F2D794" stroke="#8B4513" stroke-width="2" />
+  
+  <!-- Bord de la tarte (pâte sablée) -->
+  <path d="M50 80C50 80 60 70 100 70C140 70 150 80 150 80" fill="#F9E4B7" stroke="#8B4513" stroke-width="2" />
+  <path d="M40 120C40 120 50 110 100 110C150 110 160 120 160 120" fill="#F9E4B7" stroke="#8B4513" stroke-width="2" />
+  
+  <!-- Texture du bord de la tarte -->
+  <path d="M45 115L50 105" stroke="#8B4513" stroke-width="1" stroke-linecap="round" />
+  <path d="M60 115L65 105" stroke="#8B4513" stroke-width="1" stroke-linecap="round" />
+  <path d="M80 115L85 105" stroke="#8B4513" stroke-width="1" stroke-linecap="round" />
+  <path d="M100 115L105 105" stroke="#8B4513" stroke-width="1" stroke-linecap="round" />
+  <path d="M120 115L125 105" stroke="#8B4513" stroke-width="1" stroke-linecap="round" />
+  <path d="M140 115L145 105" stroke="#8B4513" stroke-width="1" stroke-linecap="round" />
+  <path d="M155 115L150 105" stroke="#8B4513" stroke-width="1" stroke-linecap="round" />
+  
+  <!-- Crème pâtissière -->
+  <path d="M50 80C50 80 60 95 100 95C140 95 150 80 150 80" fill="#FFD9B3" stroke="#8B4513" stroke-width="1.5" />
+  
+  <!-- Fruits sur la tarte -->
+  <!-- Fraises -->
+  <circle cx="60" cy="90" r="8" fill="#FF6B6B" stroke="#8B4513" stroke-width="1" />
+  <circle cx="80" cy="85" r="8" fill="#FF6B6B" stroke="#8B4513" stroke-width="1" />
+  <circle cx="100" cy="90" r="8" fill="#FF6B6B" stroke="#8B4513" stroke-width="1" />
+  <circle cx="120" cy="85" r="8" fill="#FF6B6B" stroke="#8B4513" stroke-width="1" />
+  <circle cx="140" cy="90" r="8" fill="#FF6B6B" stroke="#8B4513" stroke-width="1" />
+  <circle cx="70" cy="100" r="8" fill="#FF6B6B" stroke="#8B4513" stroke-width="1" />
+  <circle cx="90" cy="100" r="8" fill="#FF6B6B" stroke="#8B4513" stroke-width="1" />
+  <circle cx="110" cy="100" r="8" fill="#FF6B6B" stroke="#8B4513" stroke-width="1" />
+  <circle cx="130" cy="100" r="8" fill="#FF6B6B" stroke="#8B4513" stroke-width="1" />
+  
+  <!-- Détails des fraises -->
+  <path d="M58 86L62 86" stroke="#8B4513" stroke-width="0.5" stroke-linecap="round" />
+  <path d="M78 81L82 81" stroke="#8B4513" stroke-width="0.5" stroke-linecap="round" />
+  <path d="M98 86L102 86" stroke="#8B4513" stroke-width="0.5" stroke-linecap="round" />
+  <path d="M118 81L122 81" stroke="#8B4513" stroke-width="0.5" stroke-linecap="round" />
+  <path d="M138 86L142 86" stroke="#8B4513" stroke-width="0.5" stroke-linecap="round" />
+  <path d="M68 96L72 96" stroke="#8B4513" stroke-width="0.5" stroke-linecap="round" />
+  <path d="M88 96L92 96" stroke="#8B4513" stroke-width="0.5" stroke-linecap="round" />
+  <path d="M108 96L112 96" stroke="#8B4513" stroke-width="0.5" stroke-linecap="round" />
+  <path d="M128 96L132 96" stroke="#8B4513" stroke-width="0.5" stroke-linecap="round" />
+  
+  <!-- Feuilles de menthe -->
+  <path d="M65 75C65 75 60 70 55 75C50 80 55 85 55 85" fill="#4CAF50" stroke="#388E3C" stroke-width="1" />
+  <path d="M135 75C135 75 140 70 145 75C150 80 145 85 145 85" fill="#4CAF50" stroke="#388E3C" stroke-width="1" />
+  
+  <!-- Nappage brillant -->
+  <path d="M60 85C60 85 65 80 70 85" stroke="#FFECB3" stroke-width="1" stroke-linecap="round" opacity="0.7" />
+  <path d="M80 80C80 80 85 75 90 80" stroke="#FFECB3" stroke-width="1" stroke-linecap="round" opacity="0.7" />
+  <path d="M100 85C100 85 105 80 110 85" stroke="#FFECB3" stroke-width="1" stroke-linecap="round" opacity="0.7" />
+  <path d="M120 80C120 80 125 75 130 80" stroke="#FFECB3" stroke-width="1" stroke-linecap="round" opacity="0.7" />
+</svg>

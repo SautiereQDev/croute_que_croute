@@ -1,0 +1,31 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fond transparent -->
+  <rect width="200" height="200" fill="none" />
+  
+  <!-- Structure du four -->
+  <path d="M40 60H160V140H40V60Z" fill="#8B4513" stroke="#5D2906" stroke-width="3" />
+  
+  <!-- Ouverture du four -->
+  <path d="M60 70H140V130H60V70Z" fill="#5D2906" stroke="#3A1700" stroke-width="2" />
+  <path d="M65 75H135V125H65V75Z" fill="#FF6B00" stroke="#FF8C00" stroke-width="1.5" />
+  
+  <!-- Flammes à l'intérieur -->
+  <path d="M75 100C75 100 80 85 90 90C100 95 95 110 85 105C75 100 75 100 75 100Z" fill="#FFD700" />
+  <path d="M100 110C100 110 105 95 115 100C125 105 120 120 110 115C100 110 100 110 100 110Z" fill="#FFD700" />
+  <path d="M90 85C90 85 95 70 105 75C115 80 110 95 100 90C90 85 90 85 90 85Z" fill="#FFD700" />
+  
+  <!-- Pain à l'intérieur -->
+  <ellipse cx="100" cy="105" rx="25" ry="15" fill="#E6C27A" stroke="#8B4513" stroke-width="1.5" />
+  
+  <!-- Base du four -->
+  <rect x="35" y="140" width="130" height="10" fill="#5D2906" stroke="#3A1700" stroke-width="2" />
+  
+  <!-- Cheminée -->
+  <rect x="140" y="40" width="15" height="20" fill="#5D2906" stroke="#3A1700" stroke-width="2" />
+  <path d="M138 40H157C157 40 153 30 148 30C143 30 138 40 138 40Z" fill="#5D2906" stroke="#3A1700" stroke-width="2" />
+  <path d="M143 30C143 30 145 20 148 20C151 20 153 30 153 30" stroke="#3A1700" stroke-width="1.5" />
+  
+  <!-- Fumée -->
+  <path d="M145 15C145 15 140 10 145 5C150 0 155 5 155 10C155 15 150 15 145 15Z" fill="#CCCCCC" stroke="#AAAAAA" stroke-width="0.5" />
+  <path d="M150 10C150 10 155 5 160 10C165 15 160 20 155 15C150 10 150 10 150 10Z" fill="#CCCCCC" stroke="#AAAAAA" stroke-width="0.5" />
+</svg>

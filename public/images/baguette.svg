@@ -1,0 +1,24 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fond transparent -->
+  <rect width="200" height="200" fill="none" />
+  
+  <!-- Baguette principale -->
+  <path d="M30 80C30 80 40 60 60 60C80 60 170 80 170 100C170 120 150 140 120 140C90 140 30 120 30 100C30 90 30 80 30 80Z" fill="#F2D794" stroke="#8B4513" stroke-width="3" />
+  
+  <!-- Détails de la croûte -->
+  <path d="M40 80C40 80 60 70 90 70C120 70 160 85 160 100C160 115 140 130 120 130C100 130 40 110 40 95C40 85 40 80 40 80Z" fill="#E6C27A" stroke="#8B4513" stroke-width="1.5" />
+  
+  <!-- Entailles sur la baguette -->
+  <path d="M50 75L55 90" stroke="#8B4513" stroke-width="2" stroke-linecap="round" />
+  <path d="M70 72L75 87" stroke="#8B4513" stroke-width="2" stroke-linecap="round" />
+  <path d="M90 70L95 85" stroke="#8B4513" stroke-width="2" stroke-linecap="round" />
+  <path d="M110 72L115 87" stroke="#8B4513" stroke-width="2" stroke-linecap="round" />
+  <path d="M130 75L135 90" stroke="#8B4513" stroke-width="2" stroke-linecap="round" />
+  <path d="M150 85L155 100" stroke="#8B4513" stroke-width="2" stroke-linecap="round" />
+  
+  <!-- Miettes de pain -->
+  <circle cx="45" cy="110" r="3" fill="#E6C27A" stroke="#8B4513" stroke-width="0.5" />
+  <circle cx="55" cy="120" r="2" fill="#E6C27A" stroke="#8B4513" stroke-width="0.5" />
+  <circle cx="70" cy="125" r="2.5" fill="#E6C27A" stroke="#8B4513" stroke-width="0.5" />
+  <circle cx="150" cy="115" r="3" fill="#E6C27A" stroke="#8B4513" stroke-width="0.5" />
+</svg>

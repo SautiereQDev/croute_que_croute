@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Zain } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -111,10 +112,17 @@ const Footer = () => {
                 Contact
               </h3>
               <address className="not-italic text-amber-200 space-y-2">
-                <p>123 Rue du Pain Frais</p>
+                <a href="https://www.google.com/maps/place/123+Rue+au+Pain,+78100+Saint-Germain-en-Laye/@48.8977239,2.0882104,17z/data=!3m1!4b1!4m9!1m2!2m1!1s123+Rue+du+Pain+Frais!3m5!1s0x47e6882c49c8d495:0x609881d35ef5ca4e!8m2!3d48.897724!4d2.0930813!15sChUxMjMgUnVlIGR1IFBhaW4gRnJhaXOSARBnZW9jb2RlZF9hZGRyZXNz4AEA?hl=fr&entry=ttu&g_ep=EgoyMDI1MDMxOC4wIKXMDSoASAFQAw%3D%3D">
+                  123 Rue du Pain Frais
+                </a>
                 <p>75001 Paris, France</p>
-                <p className="mt-4">+33 1 23 45 67 89</p>
-                <p>contact@croutequecroute.fr</p>
+                <a href="tel:+33123456789" className="mt-4">
+                  +33 1 23 45 67 89
+                </a>
+                <br />
+                <a href="mailto:contact@croutequecroute.fr">
+                  contact@croutequecroute.fr
+                </a>
               </address>
             </motion.div>
           </div>

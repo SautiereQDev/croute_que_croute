@@ -1,38 +1,78 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import { set, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+
+// Définition du schéma de validation avec Zod
+const formSchema = z.object({
+  name: z
+    .string()
+    .min(2, { message: "Le nom doit contenir au moins 2 caractères" }),
+  email: z.string().email({ message: "Adresse email invalide" }),
+  message: z
+    .string()
+    .min(10, { message: "Le message doit contenir au moins 10 caractères" }),
+});
+
+// Type pour les données du formulaire basé sur le schéma Zod
+type FormData = z.infer<typeof formSchema>;
 
 const Contact = () => {
-  const [formState, setFormState] = useState({
-    name: "",
-    email: "",
-    message: "",
-    submitted: false,
-  });
+  const [submitted, setSubmitted] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  // Initialisation de React Hook Form avec le resolver Zod
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      message: "",
+    },
+  });
 
   // Utiliser useEffect pour s&apos;assurer que le composant est monté côté client
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormState((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
+  const onSubmit = (data: FormData) => {
+    // Réinitialiser l'état d'erreur avant chaque soumission
+    setError(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Ici, vous pourriez ajouter une logique pour envoyer le formulaire à un backend
-    // Pour cette démo, nous simulons simplement une soumission réussie
-    setFormState((prev) => ({
-      ...prev,
-      submitted: true,
-    }));
+    fetch("https://api.quentinsautiere.com/mail/send", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          console.log("Données du formulaire soumises:", data);
+          setSubmitted(true);
+        } else {
+          // Si la réponse contient un message d'erreur, l'utiliser
+          setError(
+            data.message ||
+              "Une erreur est survenue lors de l'envoi du message."
+          );
+        }
+      })
+      .catch((error) => {
+        console.error("Erreur lors de la soumission du formulaire:", error);
+        setError(
+          "Une erreur de est survenue lors de l'envoie. Veuillez réessayer plus tard."
+        );
+      });
+    // Suppression du finally qui réinitialise submitted
   };
 
   return (
@@ -194,16 +234,16 @@ const Contact = () => {
             >
               {/* Rendu conditionnel du formulaire uniquement côté client */}
               {isMounted &&
-                (formState.submitted ? (
+                (error ? (
                   <motion.div
-                    className="bg-green-100 border border-green-400 text-green-700 px-6 py-8 rounded-lg text-center"
+                    className="bg-red-100 border border-red-400 text-red-700 px-6 py-8 rounded-lg text-center"
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.5 }}
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-16 w-16 mx-auto text-green-500 mb-4"
+                      className="h-12 w-12 text-red-600 mx-auto mb-4"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -212,7 +252,39 @@ const Contact = () => {
                         strokeLinecap="round"
                         strokeLinejoin="round"
                         strokeWidth={2}
-                        d="M5 13l4 4L19 7"
+                        d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                    <h3 className="text-xl font-semibold mb-2">Erreur</h3>
+                    <p>{error}</p>
+                    <motion.button
+                      onClick={() => setError(null)}
+                      className="mt-4 bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-lg transition-colors"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      Réessayer
+                    </motion.button>
+                  </motion.div>
+                ) : submitted ? (
+                  <motion.div
+                    className="bg-green-100 border border-green-400 text-green-700 px-6 py-8 rounded-lg text-center"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-12 w-12 text-green-600 mx-auto mb-4"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                       />
                     </svg>
                     <h3 className="text-xl font-semibold mb-2">
@@ -224,77 +296,99 @@ const Contact = () => {
                     </p>
                   </motion.div>
                 ) : (
-                  <form
-                    onSubmit={handleSubmit}
-                    className="bg-white shadow-md rounded-lg p-6"
-                  >
+                  <div>
                     <h3 className="text-2xl font-semibold text-amber-800 mb-6">
                       Envoyez-nous un message
                     </h3>
-
-                    <div className="mb-4">
-                      <label
-                        htmlFor="name"
-                        className="block text-amber-800 font-medium mb-2"
-                      >
-                        Nom
-                      </label>
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={formState.name}
-                        onChange={handleChange}
-                        className="w-full px-4 py-2 border border-amber-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500"
-                        required
-                      />
-                    </div>
-
-                    <div className="mb-4">
-                      <label
-                        htmlFor="email"
-                        className="block text-amber-800 font-medium mb-2"
-                      >
-                        Email
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={formState.email}
-                        onChange={handleChange}
-                        className="w-full px-4 py-2 border border-amber-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500"
-                        required
-                      />
-                    </div>
-
-                    <div className="mb-6">
-                      <label
-                        htmlFor="message"
-                        className="block text-amber-800 font-medium mb-2"
-                      >
-                        Message
-                      </label>
-                      <textarea
-                        id="message"
-                        name="message"
-                        value={formState.message}
-                        onChange={handleChange}
-                        rows={5}
-                        className="w-full px-4 py-2 border border-amber-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500"
-                        required
-                      ></textarea>
-                    </div>
-
-                    <motion.button
-                      type="submit"
-                      className="w-full bg-amber-600 text-white font-medium py-3 px-4 rounded-md hover:bg-amber-700 transition-colors"
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
+                    <form
+                      onSubmit={handleSubmit(onSubmit)}
+                      className="space-y-6"
                     >
-                      Envoyer
-                    </motion.button>
-                  </form>
+                      <div>
+                        <label
+                          htmlFor="name"
+                          className="block text-amber-800 font-medium mb-2"
+                        >
+                          Nom
+                        </label>
+                        <input
+                          type="text"
+                          id="name"
+                          {...register("name")}
+                          className={`w-full px-4 py-3 rounded-lg border ${
+                            errors.name
+                              ? "border-red-500 bg-red-50"
+                              : "border-amber-300 bg-amber-50"
+                          } focus:outline-none focus:ring-2 focus:ring-amber-500`}
+                          placeholder="Votre nom"
+                        />
+                        {errors.name && (
+                          <p className="text-red-500 text-sm mt-1">
+                            {errors.name.message}
+                          </p>
+                        )}
+                      </div>
+
+                      <div>
+                        <label
+                          htmlFor="email"
+                          className="block text-amber-800 font-medium mb-2"
+                        >
+                          Email
+                        </label>
+                        <input
+                          type="email"
+                          id="email"
+                          {...register("email")}
+                          className={`w-full px-4 py-3 rounded-lg border ${
+                            errors.email
+                              ? "border-red-500 bg-red-50"
+                              : "border-amber-300 bg-amber-50"
+                          } focus:outline-none focus:ring-2 focus:ring-amber-500`}
+                          placeholder="Votre email"
+                        />
+                        {errors.email && (
+                          <p className="text-red-500 text-sm mt-1">
+                            {errors.email.message}
+                          </p>
+                        )}
+                      </div>
+
+                      <div>
+                        <label
+                          htmlFor="message"
+                          className="block text-amber-800 font-medium mb-2"
+                        >
+                          Message
+                        </label>
+                        <textarea
+                          id="message"
+                          {...register("message")}
+                          rows={5}
+                          className={`w-full px-4 py-3 rounded-lg border ${
+                            errors.message
+                              ? "border-red-500 bg-red-50"
+                              : "border-amber-300 bg-amber-50"
+                          } focus:outline-none focus:ring-2 focus:ring-amber-500`}
+                          placeholder="Votre message"
+                        ></textarea>
+                        {errors.message && (
+                          <p className="text-red-500 text-sm mt-1">
+                            {errors.message.message}
+                          </p>
+                        )}
+                      </div>
+
+                      <motion.button
+                        type="submit"
+                        className="bg-amber-600 hover:bg-amber-700 text-white font-medium py-3 px-6 rounded-lg transition-colors w-full md:w-auto"
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                      >
+                        Envoyer
+                      </motion.button>
+                    </form>
+                  </div>
                 ))}
             </motion.div>
           </div>

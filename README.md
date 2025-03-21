@@ -1,5 +1,6 @@
 # Croûte que Croûte - Artisan Bakery Website
 
+![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)
 ![Next.js](https://img.shields.io/badge/Next.js-15.2.3-black?style=flat-square&logo=next.js)
 ![React](https://img.shields.io/badge/React-19.0.0-blue?style=flat-square&logo=react)
 ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4.0.0-38B2AC?style=flat-square&logo=tailwind-css)
@@ -94,11 +95,14 @@ npm run build
 - **Typography** - Clean, readable fonts for optimal user experience
 - **Animations** - Subtle, purposeful animations enhancing the browsing experience
 - **Imagery** - SVG illustrations representing bakery products
-
+  
+---
 ## Developper
 **SautiereQDev** - [GitHub](https://github.com/SautiereQDev) - [Personal website](https://quentinsautiere.com)
 
 ## 📝 License
+![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)
+
 Apache License 2.0 © 2023 SautiereQDev
 All rights reserved.
 

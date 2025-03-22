@@ -4,9 +4,9 @@ const nextConfig: NextConfig = {
   images: {
     domains: ["cdn.quentinsautiere.com"],
   },
-  output: "export",
-  basePath: "/croute_que_croute",
-  assetPrefix: "/croute_que_croute",
+  output: "standalone",
+  basePath: process.env.BASE_PATH || "/croute_que_croute",
+  assetPrefix: process.env.BASE_PATH || "/croute_que_croute",
 };
 
 export default nextConfig;

@@ -1,6 +1,6 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 // Définition de l&apos;interface pour les bulles
 interface Bubble {
@@ -14,6 +14,16 @@ interface Bubble {
 const Hero = () => {
   const [isMounted, setIsMounted] = useState(false);
   const [bubbles, setBubbles] = useState<Bubble[]>([]);
+  const heroRef = useRef<HTMLDivElement>(null);
+
+  // Pour l'effet de parallaxe
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], [0, 200]);
+  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   // Générer les bulles uniquement côté client pour éviter les problèmes d&apos;hydratation
   useEffect(() => {
@@ -37,10 +47,25 @@ const Hero = () => {
   return (
     <section
       id="accueil"
-      className="relative min-h-screen bg-amber-50 overflow-hidden"
+      ref={heroRef}
+      className="relative min-h-screen overflow-hidden"
     >
+      {/* Image de fond avec effet parallaxe */}
+      <motion.div className="absolute inset-0 z-0" style={{ y, opacity }}>
+        <div className="absolute inset-0 bg-black/30 z-10" />{" "}
+        {/* Overlay pour améliorer la lisibilité du texte */}
+        <Image
+          src="/images/boulangerie.jpg"
+          alt="Boulangerie Croûte que Croûte"
+          fill
+          priority
+          className="object-cover object-center"
+          sizes="100vw"
+        />
+      </motion.div>
+
       {/* Animated background elements - Rendu uniquement côté client */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden z-10">
         {isMounted &&
           bubbles.map((bubble, i) => (
             <motion.div
@@ -68,18 +93,32 @@ const Hero = () => {
           ))}
       </div>
 
-      <div className="container mx-auto px-4 py-20 flex flex-col items-center justify-center min-h-screen relative z-10">
+      <div className="container mx-auto px-4 py-20 flex flex-col items-center justify-center min-h-screen relative z-20">
         <motion.div
-          className="text-center mb-12"
+          className="text-center mb-12 backdrop-blur-sm bg-white/10 p-8 rounded-xl shadow-2xl"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-4xl md:text-6xl font-bold text-amber-800 mb-6">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+            className="mb-6"
+          >
+            <Image
+              src="/images/bakery_logo.svg"
+              alt="Croûte que Croûte Logo"
+              width={100}
+              height={100}
+              className="mx-auto bg-white rounded-full p-2 shadow-lg"
+            />
+          </motion.div>
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
             Bienvenue chez <br />
-            <span className="text-amber-600">Croûte que Croûte</span>
+            <span className="text-amber-300">Croûte que Croûte</span>
           </h1>
-          <p className="text-xl text-amber-700 max-w-2xl mx-auto mb-8">
+          <p className="text-xl text-white max-w-2xl mx-auto mb-8">
             Artisans boulangers depuis 1987, nous perpétuons la tradition du bon
             pain et des pâtisseries artisanales.
           </p>
@@ -91,7 +130,7 @@ const Hero = () => {
           >
             <motion.a
               href="#nos-produits"
-              className="px-8 py-3 bg-amber-600 text-white rounded-full font-medium hover:bg-amber-700 transition-colors"
+              className="px-8 py-3 bg-amber-500 text-white rounded-full font-medium hover:bg-amber-600 transition-all shadow-lg hover:shadow-amber-500/30 hover:-translate-y-1"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -99,7 +138,7 @@ const Hero = () => {
             </motion.a>
             <motion.a
               href="#contact"
-              className="px-8 py-3 bg-transparent border-2 border-amber-600 text-amber-600 rounded-full font-medium hover:bg-amber-50 transition-colors"
+              className="px-8 py-3 bg-white/20 backdrop-blur-sm border-2 border-white text-white rounded-full font-medium hover:bg-white/30 transition-all shadow-lg hover:shadow-white/20 hover:-translate-y-1"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -109,27 +148,30 @@ const Hero = () => {
         </motion.div>
 
         <motion.div
-          className="relative w-full max-w-4xl mx-auto mt-8"
+          className="relative w-full max-w-4xl mx-auto mt-12"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.5, duration: 0.8 }}
         >
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <motion.div
-              className="bg-white p-6 rounded-lg shadow-md text-center"
+              className="bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-xl text-center transform transition-all duration-300"
               whileHover={{
                 y: -10,
-                boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)",
+                boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1)",
               }}
               transition={{ duration: 0.3 }}
             >
               <div className="flex justify-center mb-4">
-                <Image
-                  src="/images/baguette.svg"
-                  alt="Pain frais"
-                  width={80}
-                  height={80}
-                />
+                <div className="bg-amber-100 p-4 rounded-full shadow-inner">
+                  <Image
+                    src="/images/baguette.svg"
+                    alt="Pain frais"
+                    width={60}
+                    height={60}
+                    className="transform transition-all duration-300 hover:rotate-6"
+                  />
+                </div>
               </div>
               <h3 className="text-xl font-semibold text-amber-800 mb-2">
                 Pain Frais
@@ -140,20 +182,23 @@ const Hero = () => {
             </motion.div>
 
             <motion.div
-              className="bg-white p-6 rounded-lg shadow-md text-center"
+              className="bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-xl text-center transform transition-all duration-300"
               whileHover={{
                 y: -10,
-                boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)",
+                boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1)",
               }}
               transition={{ duration: 0.3 }}
             >
               <div className="flex justify-center mb-4">
-                <Image
-                  src="/images/croissant.svg"
-                  alt="Viennoiseries"
-                  width={80}
-                  height={80}
-                />
+                <div className="bg-amber-100 p-4 rounded-full shadow-inner">
+                  <Image
+                    src="/images/croissant.svg"
+                    alt="Viennoiseries"
+                    width={60}
+                    height={60}
+                    className="transform transition-all duration-300 hover:rotate-6"
+                  />
+                </div>
               </div>
               <h3 className="text-xl font-semibold text-amber-800 mb-2">
                 Viennoiseries
@@ -164,20 +209,23 @@ const Hero = () => {
             </motion.div>
 
             <motion.div
-              className="bg-white p-6 rounded-lg shadow-md text-center"
+              className="bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-xl text-center transform transition-all duration-300"
               whileHover={{
                 y: -10,
-                boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)",
+                boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1)",
               }}
               transition={{ duration: 0.3 }}
             >
               <div className="flex justify-center mb-4">
-                <Image
-                  src="/images/oven.svg"
-                  alt="Pâtisseries"
-                  width={80}
-                  height={80}
-                />
+                <div className="bg-amber-100 p-4 rounded-full shadow-inner">
+                  <Image
+                    src="/images/cake.svg"
+                    alt="Pâtisseries"
+                    width={60}
+                    height={60}
+                    className="transform transition-all duration-300 hover:rotate-6"
+                  />
+                </div>
               </div>
               <h3 className="text-xl font-semibold text-amber-800 mb-2">
                 Pâtisseries

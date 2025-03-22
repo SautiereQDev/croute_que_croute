@@ -6,6 +6,12 @@ export const metadata: Metadata = {
   title: "Croûte que Croûte | Boulangerie Artisanale",
   description:
     "Boulangerie artisanale depuis 1987. Pains, viennoiseries et pâtisseries faits maison avec des ingrédients de qualité.",
+  icons: {
+    icon: "/images/favicon.ico",
+    shortcut: "/images/favicon.ico",
+    apple: "/images/favicon.ico",
+  },
+  manifest: "/manifest.json",
 };
 
 export default function RootLayout({

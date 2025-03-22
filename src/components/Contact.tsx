@@ -10,6 +10,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import Image from "next/image";
 import MyMapComponent from "./GoogleMap";
+import getAssetPath from "@/lib/assetPath";
 
 // Définition du schéma de validation avec Zod
 const formSchema = z.object({
@@ -103,7 +104,7 @@ const Contact = () => {
         <div className="absolute inset-0 bg-amber-800/5 z-10" />{" "}
         {/* Overlay pour améliorer la lisibilité du texte */}
         <Image
-          src="/images/bakery_logo.svg"
+          src={getAssetPath("/images/bakery_logo.svg")}
           alt="Fond logo boulangerie"
           fill
           className="object-cover object-center opacity-5"
@@ -143,7 +144,7 @@ const Contact = () => {
             className="mb-6"
           >
             <Image
-              src="/images/cake.svg"
+              src={getAssetPath("/images/cake.svg")}
               alt="Gâteau"
               width={80}
               height={80}
@@ -184,7 +185,7 @@ const Contact = () => {
               <h3 className="text-2xl font-semibold text-amber-800 mb-6 flex items-center">
                 <span className="bg-amber-100 p-2 rounded-full mr-3 shadow-sm">
                   <Image
-                    src="/images/baguette.svg"
+                    src={getAssetPath("/images/baguette.svg")}
                     alt="Baguette"
                     width={24}
                     height={24}
@@ -352,7 +353,7 @@ const Contact = () => {
                 <h3 className="text-2xl font-semibold text-amber-800 mb-6 flex items-center">
                   <span className="bg-amber-100 p-2 rounded-full mr-3 shadow-sm">
                     <Image
-                      src="/images/oven.svg"
+                      src={getAssetPath("/images/oven.svg")}
                       alt="Four"
                       width={24}
                       height={24}
@@ -450,7 +451,7 @@ const Contact = () => {
                     <h3 className="text-2xl font-semibold text-amber-800 mb-6 flex items-center">
                       <span className="bg-amber-100 p-2 rounded-full mr-3 shadow-sm">
                         <Image
-                          src="/images/croissant.svg"
+                          src={getAssetPath("/images/croissant.svg")}
                           alt="Croissant"
                           width={24}
                           height={24}

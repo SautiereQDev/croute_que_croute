@@ -1,3 +1,4 @@
+import getAssetPath from "@/lib/assetPath";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import { useRef } from "react";
@@ -25,7 +26,7 @@ const About = () => {
         <div className="absolute inset-0 bg-amber-800/10 z-10" />{" "}
         {/* Overlay pour améliorer la lisibilité du texte */}
         <Image
-          src="/images/wheat.svg"
+          src={getAssetPath("/images/wheat.svg")}
           alt="Fond de blé"
           fill
           className="object-cover object-center opacity-10"
@@ -50,7 +51,7 @@ const About = () => {
               className="mb-6"
             >
               <Image
-                src="/images/baker_hat.svg"
+                src={getAssetPath("/images/baker_hat.svg")}
                 alt="Chapeau de boulanger"
                 width={80}
                 height={80}
@@ -73,7 +74,7 @@ const About = () => {
               <h3 className="text-2xl font-semibold text-amber-800 mb-4 flex items-center">
                 <span className="bg-amber-100 p-2 rounded-full mr-3 shadow-sm">
                   <Image
-                    src="/images/bread.svg"
+                    src={getAssetPath("/images/bread.svg")}
                     alt="Pain"
                     width={24}
                     height={24}
@@ -104,7 +105,7 @@ const About = () => {
               <h3 className="text-2xl font-semibold text-amber-800 mb-4 flex items-center">
                 <span className="bg-amber-100 p-2 rounded-full mr-3 shadow-sm">
                   <Image
-                    src="/images/tart.svg"
+                    src={getAssetPath("/images/tart.svg")}
                     alt="Tarte"
                     width={24}
                     height={24}

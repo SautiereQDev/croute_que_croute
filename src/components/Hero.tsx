@@ -1,3 +1,4 @@
+import getAssetPath from "@/lib/assetPath";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
@@ -55,7 +56,7 @@ const Hero = () => {
         <div className="absolute inset-0 bg-black/30 z-10" />{" "}
         {/* Overlay pour améliorer la lisibilité du texte */}
         <Image
-          src="/images/boulangerie.jpg"
+          src={getAssetPath("/images/boulangerie.jpg")}
           alt="Boulangerie Croûte que Croûte"
           fill
           priority
@@ -107,7 +108,7 @@ const Hero = () => {
             className="mb-6"
           >
             <Image
-              src="/images/bakery_logo.svg"
+              src={getAssetPath("/images/bakery_logo.svg")}
               alt="Croûte que Croûte Logo"
               width={100}
               height={100}
@@ -165,7 +166,7 @@ const Hero = () => {
               <div className="flex justify-center mb-4">
                 <div className="bg-amber-100 p-4 rounded-full shadow-inner">
                   <Image
-                    src="/images/baguette.svg"
+                    src={getAssetPath("/images/baguette.svg")}
                     alt="Pain frais"
                     width={60}
                     height={60}
@@ -192,7 +193,7 @@ const Hero = () => {
               <div className="flex justify-center mb-4">
                 <div className="bg-amber-100 p-4 rounded-full shadow-inner">
                   <Image
-                    src="/images/croissant.svg"
+                    src={getAssetPath("/images/croissant.svg")}
                     alt="Viennoiseries"
                     width={60}
                     height={60}
@@ -219,7 +220,7 @@ const Hero = () => {
               <div className="flex justify-center mb-4">
                 <div className="bg-amber-100 p-4 rounded-full shadow-inner">
                   <Image
-                    src="/images/cake.svg"
+                    src={getAssetPath("/images/cake.svg")}
                     alt="Pâtisseries"
                     width={60}
                     height={60}

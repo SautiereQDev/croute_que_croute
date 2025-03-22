@@ -1,3 +1,4 @@
+import getAssetPath from "@/lib/assetPath";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -52,7 +53,7 @@ const Header = () => {
           >
             <Link href="/" className="flex items-center">
               <Image
-                src="/images/bakery_logo.svg"
+                src={getAssetPath("/images/bakery_logo.svg")}
                 alt="Croûte que Croûte"
                 width={60}
                 height={60}

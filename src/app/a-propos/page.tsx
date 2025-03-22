@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Image from "next/image";
+import getAssetPath from "@/lib/assetPath";
 
 const AboutPage = () => {
   return (
@@ -37,7 +38,7 @@ const AboutPage = () => {
                 >
                   <div className="bg-amber-100 p-6 rounded-lg shadow-md">
                     <Image
-                      src="/images/baker_hat.svg"
+                      src={getAssetPath("/images/baker_hat.svg")}
                       alt="Fondation de la boulangerie"
                       width={400}
                       height={300}
@@ -108,7 +109,7 @@ const AboutPage = () => {
                 >
                   <div className="bg-amber-100 p-6 rounded-lg shadow-md">
                     <Image
-                      src="/images/wheat.svg"
+                      src={getAssetPath("/images/wheat.svg")}
                       alt="Évolution de la boulangerie"
                       width={400}
                       height={300}

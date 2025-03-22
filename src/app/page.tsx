@@ -7,6 +7,7 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import getAssetPath from "@/lib/assetPath";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -39,7 +40,7 @@ export default function Home() {
               className="text-center"
             >
               <motion.img
-                src="/images/bakery_logo.svg"
+                src={getAssetPath("/images/bakery_logo.svg")}
                 alt="Croûte que Croûte"
                 width={120}
                 height={120}

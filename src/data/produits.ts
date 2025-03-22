@@ -64,7 +64,7 @@ export const products: Product[] = [
     id: 4,
     name: "Croissant au Beurre",
     description:
-      "Viennoiserie feuilletée au bon goût de beurre, croustillante à l&apos;extérieur et moelleuse à l&apos;intérieur.",
+      "Viennoiserie feuilletée au bon goût de beurre, croustillante à l'extérieur et moelleuse à l'intérieur.",
     price: 1.5,
     image: "croissants.webp",
     category: "viennoiserie",

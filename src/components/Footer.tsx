@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { Zain } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
 

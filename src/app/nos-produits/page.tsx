@@ -9,7 +9,6 @@ import products from "@/data/produits";
 import { ProductCard } from "@/components/ui/ProductCard";
 import { ProductDetail } from "@/components/ui/ProductDetail";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 
 const ProductsPage = () => {
   // État pour filtrer les produits par catégorie

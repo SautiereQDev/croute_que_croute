@@ -5,7 +5,7 @@ import {
   AnimatePresence,
 } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
-import { set, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import Image from "next/image";

@@ -37,7 +37,7 @@ export function ProductCard({ product, onClick }: ProductCardProps) {
         onClick={() => onClick(product)}
       >
         <CardHeader className="p-0">
-          <div className="bg-amber-100 p-2">
+          <div className="bg-amber-100 p-1">
             <AspectRatio ratio={4 / 3} className="bg-muted overflow-hidden">
               <Image
                 src={
@@ -79,7 +79,7 @@ export function ProductCard({ product, onClick }: ProductCardProps) {
           <Button
             variant="ghost"
             size="default"
-            className="text-amber-600 hover:text-amber-800 hover:bg-amber-100 font-medium text-xs px-2 py-0 h-5"
+            className="text-amber-600 hover:text-amber-800 hover:bg-amber-100 font-medium text-sm px-2 py-0 h-5"
             onClick={(e) => {
               e.stopPropagation();
               onClick(product);

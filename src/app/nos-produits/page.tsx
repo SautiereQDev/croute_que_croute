@@ -5,218 +5,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useState } from "react";
 import Image from "next/image";
-
-// Définition des types pour les produits
-type ProductCategory = "pain" | "viennoiserie" | "patisserie";
-
-interface Product {
-  id: number;
-  name: string;
-  description: string;
-  price: number;
-  image: string;
-  category: ProductCategory;
-  available: boolean;
-  ingredients?: string[];
-  allergens?: string[];
-  nutritionalInfo?: {
-    calories: number;
-    proteins: number;
-    carbs: number;
-    fats: number;
-  };
-}
-
-// Données statiques des produits
-const products: Product[] = [
-  {
-    id: 1,
-    name: "Pain de Campagne",
-    description:
-      "Notre pain traditionnel à la mie dense et au goût authentique.",
-    price: 3.5,
-    image: "/images/bread.svg",
-    category: "pain",
-    available: true,
-    ingredients: ["Farine de blé", "Eau", "Levain", "Sel"],
-    allergens: ["Gluten"],
-    nutritionalInfo: {
-      calories: 250,
-      proteins: 8,
-      carbs: 48,
-      fats: 1,
-    },
-  },
-  {
-    id: 2,
-    name: "Baguette Tradition",
-    description: "La classique baguette française, croustillante et dorée.",
-    price: 1.2,
-    image: "/images/bread.svg",
-    category: "pain",
-    available: true,
-    ingredients: ["Farine de blé", "Eau", "Levure", "Sel"],
-    allergens: ["Gluten"],
-    nutritionalInfo: {
-      calories: 220,
-      proteins: 7,
-      carbs: 45,
-      fats: 1,
-    },
-  },
-  {
-    id: 3,
-    name: "Pain aux Céréales",
-    description:
-      "Pain complet enrichi de graines variées pour plus de saveurs et de bienfaits.",
-    price: 4.2,
-    image: "/images/bread.svg",
-    category: "pain",
-    available: true,
-    ingredients: [
-      "Farine complète",
-      "Eau",
-      "Levain",
-      "Graines (lin, tournesol, sésame)",
-      "Sel",
-    ],
-    allergens: ["Gluten", "Sésame"],
-    nutritionalInfo: {
-      calories: 280,
-      proteins: 10,
-      carbs: 42,
-      fats: 5,
-    },
-  },
-  {
-    id: 4,
-    name: "Croissant au Beurre",
-    description:
-      "Viennoiserie feuilletée au bon goût de beurre, croustillante à l&apos;extérieur et moelleuse à l&apos;intérieur.",
-    price: 1.5,
-    image: "/images/croissant.svg",
-    category: "viennoiserie",
-    available: true,
-    ingredients: ["Farine de blé", "Beurre", "Sucre", "Levure", "Œufs", "Sel"],
-    allergens: ["Gluten", "Lactose", "Œufs"],
-    nutritionalInfo: {
-      calories: 320,
-      proteins: 5,
-      carbs: 30,
-      fats: 18,
-    },
-  },
-  {
-    id: 5,
-    name: "Pain au Chocolat",
-    description: "Viennoiserie feuilletée garnie de bâtons de chocolat noir.",
-    price: 1.6,
-    image: "/images/croissant.svg",
-    category: "viennoiserie",
-    available: true,
-    ingredients: [
-      "Farine de blé",
-      "Beurre",
-      "Chocolat noir",
-      "Sucre",
-      "Levure",
-      "Œufs",
-      "Sel",
-    ],
-    allergens: ["Gluten", "Lactose", "Œufs", "Soja"],
-    nutritionalInfo: {
-      calories: 340,
-      proteins: 6,
-      carbs: 32,
-      fats: 20,
-    },
-  },
-  {
-    id: 6,
-    name: "Chausson aux Pommes",
-    description: "Pâte feuilletée garnie de compote de pommes maison.",
-    price: 1.8,
-    image: "/images/croissant.svg",
-    category: "viennoiserie",
-    available: true,
-    ingredients: [
-      "Farine de blé",
-      "Beurre",
-      "Pommes",
-      "Sucre",
-      "Cannelle",
-      "Levure",
-    ],
-    allergens: ["Gluten", "Lactose"],
-    nutritionalInfo: {
-      calories: 300,
-      proteins: 4,
-      carbs: 35,
-      fats: 16,
-    },
-  },
-  {
-    id: 7,
-    name: "Tarte aux Fruits",
-    description:
-      "Pâte sablée garnie de crème pâtissière et de fruits frais de saison.",
-    price: 3.8,
-    image: "/images/tart.svg",
-    category: "patisserie",
-    available: true,
-    ingredients: [
-      "Farine",
-      "Beurre",
-      "Sucre",
-      "Œufs",
-      "Lait",
-      "Fruits de saison",
-      "Vanille",
-    ],
-    allergens: ["Gluten", "Lactose", "Œufs"],
-    nutritionalInfo: {
-      calories: 280,
-      proteins: 5,
-      carbs: 38,
-      fats: 12,
-    },
-  },
-  {
-    id: 8,
-    name: "Éclair au Café",
-    description: "Pâte à choux garnie de crème au café et glacée.",
-    price: 2.5,
-    image: "/images/cake.svg",
-    category: "patisserie",
-    available: true,
-    ingredients: ["Farine", "Beurre", "Œufs", "Sucre", "Café", "Crème"],
-    allergens: ["Gluten", "Lactose", "Œufs"],
-    nutritionalInfo: {
-      calories: 260,
-      proteins: 6,
-      carbs: 28,
-      fats: 14,
-    },
-  },
-  {
-    id: 9,
-    name: "Mille-feuille",
-    description:
-      "Alternance de pâte feuilletée croustillante et de crème pâtissière onctueuse.",
-    price: 3.2,
-    image: "/images/cake.svg",
-    category: "patisserie",
-    available: true,
-    ingredients: ["Pâte feuilletée", "Crème pâtissière", "Fondant", "Vanille"],
-    allergens: ["Gluten", "Lactose", "Œufs"],
-    nutritionalInfo: {
-      calories: 350,
-      proteins: 5,
-      carbs: 40,
-      fats: 18,
-    },
-  },
-];
+import { Product, ProductCategory } from "@/types/global";
+import products from "@/data/produits";
 
 const ProductsPage = () => {
   // État pour filtrer les produits par catégorie
@@ -322,7 +112,10 @@ const ProductsPage = () => {
                 >
                   <div className="p-4 flex justify-center bg-amber-100">
                     <Image
-                      src={product.image}
+                      src={
+                        "https://cdn.quentinsautiere.com/croute_que_croute/" +
+                        product.image
+                      }
                       alt={product.name}
                       width={120}
                       height={120}
@@ -404,7 +197,10 @@ const ProductsPage = () => {
                 <div className="flex flex-col md:flex-row gap-6 mb-6">
                   <div className="md:w-1/3 bg-amber-100 p-4 rounded-lg flex items-center justify-center">
                     <Image
-                      src={selectedProduct.image}
+                      src={
+                        "https://cdn.quentinsautiere.com/croute_que_croute/" +
+                        selectedProduct.image
+                      }
                       alt={selectedProduct.name}
                       width={150}
                       height={150}

@@ -62,7 +62,7 @@ npm start
 
 The website leverages Next.js Static Site Generation (SSG) for:
 
-- **Nextjs images optimisation** - Optimized images for faster loading 
+- **Nextjs images optimisation** - Optimized images for faster loading
 - **Improved Page Load Speed** - Pre-rendered HTML for faster initial load
 - **Lazy Loading** - Images loaded on-demand for smoother browsing
 - **Better Search Engine Visibility** - Complete HTML content for search engine crawlers
@@ -97,10 +97,13 @@ npm run build
 - **Imagery** - SVG illustrations representing bakery products
   
 ---
+
 ## Developper
+
 **SautiereQDev** - [GitHub](https://github.com/SautiereQDev) - [Personal website](https://quentinsautiere.com)
 
 ## 📝 License
+
 ![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)
 
 Apache License 2.0 © 2023 SautiereQDev
